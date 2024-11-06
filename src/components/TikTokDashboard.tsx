@@ -38,33 +38,6 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon: Icon, trend }) 
   </Card>
 )
 
-function LastUpdated() {
-  const [dateString, setDateString] = useState<string>('')
-
-  useEffect(() => {
-    // Set date string only on client side
-    setDateString(new Date().toLocaleString('en-US', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: true
-    }))
-  }, [])
-
-  if (!dateString) {
-    return null // Return null on server-side to prevent hydration mismatch
-  }
-
-  return (
-    <div className="text-sm text-gray-500">
-      Last updated: {dateString}
-    </div>
-  )
-}
-
 export default function TikTokDashboard() {
   return (
     <div className="p-6 space-y-6">
